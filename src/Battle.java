@@ -35,6 +35,7 @@ public class Battle {
                 System.out.println(monster + " побежден.");
                 hero.gainExperience(monster.getExperience());
                 hero.gainGold(monster.getGold());
+                System.out.println(hero.getName() + ": " + hero.getHealth() + " здоровье, " + hero.getExperience() + " опыт, " + hero.getGold() + " золото.");
 
             }
         }).start();

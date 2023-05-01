@@ -15,6 +15,7 @@ public abstract class Persons {
         health = 100;
         skill = 10;
         strength = 100;
+        experience = 5;
         this.name = name;
         this.gold = gold;
 
@@ -45,16 +46,17 @@ public abstract class Persons {
         this.health = health;
     }
 
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
     public int attack() {
         Random random = new Random();
         int roll = random.nextInt(100);
-        System.err.println("roll " + roll);
         int damage = 0;
         if (skill * 3 > roll) {
             damage = strength;
-            System.err.println("damage " + damage + "удар прошел");
         }
-        System.err.println("удар не прошел");
         return damage;
     }
 

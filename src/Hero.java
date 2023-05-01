@@ -8,7 +8,7 @@ public class Hero extends Persons {
     }
 
     public void gainExperience (int experience) {
-        this.experience += experience;
+        setExperience(getExperience() + experience);
         System.out.printf(getName() + " получил опыт в размере %d условных единиц.\n", experience);
     }
 

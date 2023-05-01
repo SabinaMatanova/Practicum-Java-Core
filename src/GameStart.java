@@ -4,12 +4,11 @@ import java.io.InputStreamReader;
 
 public class GameStart {
     private static BufferedReader br;
-    private static Hero hero = null;
+    private static Hero hero;
     private static Battle battle;
 
     public static void main(String[] args) {
         br = new BufferedReader(new InputStreamReader(System.in));
-
         System.out.println("Введите имя персонажа:");
         try {
             command(br.readLine());
@@ -22,22 +21,25 @@ public class GameStart {
         if (hero == null) {
             hero = new Hero(string);
             System.out.println(String.format("Спасити наш мир от монстров вызвался %s! Удачи!", hero.getName()));
-            printNavigation();
         }
         switch (string) {
             case "1": {
                 System.out.println("Торговец еще не приехал.");
                 command(br.readLine());
+                break;
             }
             case "2": {
-                Battle battle = new Battle(hero, new Skeleton());
+                battle = new Battle(hero, new Skeleton());
                 battle.start();
-                System.err.println("батл начался");
+                break;
             }
             case "3": {
                 System.exit(1);
+                break;
             }
         }
+
+        printNavigation();
         command(br.readLine());
     }
 
