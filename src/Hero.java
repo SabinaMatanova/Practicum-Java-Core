@@ -1,22 +1,19 @@
 public class Hero extends Persons {
 
-    String name;
+    private int experience;
 
-
-    public Hero(Hero hero, String name) {
-        super();
-        this.name = name;
+    public Hero(String name) {
+        super(name, 0);
         experience = 0;
-        gold = 0;
     }
 
     public void gainExperience (int experience) {
         this.experience += experience;
-        System.out.printf(name + " получил опыт в размере %d условных единиц.\n", experience);
+        System.out.printf(getName() + " получил опыт в размере %d условных единиц.\n", experience);
     }
 
     public void gainGold (int gold) {
-        this.gold += gold;
-        System.out.printf(name + " получил золото в размере %d условных единиц.\n", gold);
+        setGold(getGold() + gold);
+        System.out.printf(getName() + " получил золото в размере %d условных единиц.\n", gold);
     }
 }

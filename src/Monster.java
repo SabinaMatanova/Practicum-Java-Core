@@ -1,5 +1,6 @@
-public class Monster extends Persons{
-    public Monster(String persons) {
-        super(persons);
+public abstract class Monster extends Persons{
+
+    public Monster(String name) {
+        super(name, 10);
     }
 }

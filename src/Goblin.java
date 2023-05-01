@@ -1,5 +1,5 @@
 public class Goblin extends Monster {
-    public Goblin(String persons) {
-        super(persons);
+    public Goblin() {
+        super("Goblin");
     }
 }

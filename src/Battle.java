@@ -1,20 +1,20 @@
 public class Battle {
+    private final Hero hero;
+    private final Monster monster;
+
     public Battle(Hero hero, Monster monster) {
         this.hero = hero;
         this.monster = monster;
     }
 
-    private final Hero hero;
-    private final Monster monster;
-
     public void start() {
         new Thread(() -> {
-            while (hero.health > 0 && monster.health > 0) {
+            while (hero.getHealth() > 0 && monster.getHealth() > 0) {
                 int heroDamage = hero.attack();
                 if (heroDamage == 0) {
-                    System.out.println(hero.name + " промахнулся");
+                    System.out.println(hero.getName() + " промахнулся");
                 } else {
-                    System.out.printf(hero.name + " нанес удар в размере %d единиц урона\n", heroDamage);
+                    System.out.printf(hero.getName() + " нанес удар в размере %d единиц урона\n", heroDamage);
                     monster.takeDamage(heroDamage);
                 }
                 int monsterDamage = monster.attack();
@@ -29,8 +29,8 @@ public class Battle {
                     e.printStackTrace();
                 }
             }
-            if (hero.health <= 0) {
-                System.out.println(hero.name + " погиб.");
+            if (hero.getHealth() <= 0) {
+                System.out.println(hero.getName() + " погиб.");
             } else {
                 System.out.println(monster + " побежден.");
                 hero.gainExperience(monster.getExperience());

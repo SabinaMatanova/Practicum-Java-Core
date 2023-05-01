@@ -1,22 +1,23 @@
-public class Persons {
+import java.util.Random;
 
-    public int health = 100;
-    public int skill = 0;
-    public int strength;
-    public int experience;
-    public int gold;
+public abstract class Persons {
 
-    public int getGold() {
-        return gold;
-    }
+    private int health = 100;
+    private int skill = 10;
+    private int strength;
+    private int experience;
+    private int gold;
+    private String name;
 
-    public Persons(String persons) {
+
+    public Persons(String name, int gold) {
 
         health = 100;
-        skill = 0;
+        skill = 10;
         strength = 100;
-        experience = 10;
-        gold = 10;
+        this.name = name;
+        this.gold = gold;
+
 
     }
 
@@ -24,12 +25,36 @@ public class Persons {
         return experience;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     public int attack() {
-        int random = (int) (Math.random() * 100);
+        Random random = new Random();
+        int roll = random.nextInt(100);
+        System.err.println("roll " + roll);
         int damage = 0;
-        if (skill * 3 > random) {
+        if (skill * 3 > roll) {
             damage = strength;
+            System.err.println("damage " + damage + "удар прошел");
         }
+        System.err.println("удар не прошел");
         return damage;
     }
 
@@ -38,5 +63,9 @@ public class Persons {
         if (health < 0) {
             health = 0;
         }
+    }
+    @Override
+    public String toString() {
+        return String.format("%s здоровье:%d", name, health);
     }
 }
